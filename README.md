@@ -1,3 +1,4 @@
 # openpaas-auth-client
 
-OpenPaaS Authentication Client
+OpenPaaS client-side authentication library.
+
