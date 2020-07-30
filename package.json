@@ -1,0 +1,19 @@
+{
+  "name": "openpaas-auth-client",
+  "version": "0.0.1",
+  "description": "OpenPaaS Auth Client",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenPaaS-Suite/openpaas-auth-client.git"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE file",
+  "bugs": {
+    "url": "https://github.com/OpenPaaS-Suite/openpaas-auth-client/issues"
+  },
+  "homepage": "https://github.com/OpenPaaS-Suite/openpaas-auth-client#readme"
+}
