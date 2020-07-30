@@ -17,6 +17,9 @@
     "url": "https://github.com/OpenPaaS-Suite/openpaas-auth-client/issues"
   },
   "homepage": "https://github.com/OpenPaaS-Suite/openpaas-auth-client#readme",
+  "dependencies": {
+    "oidc-client": "^1.10.1"
+  },
   "devDependencies": {
     "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.0",
