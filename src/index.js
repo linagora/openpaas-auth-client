@@ -16,4 +16,4 @@ function getAuthProvider(provider, options = {}) {
   return new AuthProvider(options);
 }
 
-export default { getAuthProvider };
+export default getAuthProvider;
