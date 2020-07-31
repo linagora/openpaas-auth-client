@@ -17,7 +17,8 @@ function uppercaseFirstLetter(name) {
 }
 
 class OIDCStrategy {
-  // TODO:
+  // eslint-disable-next-line no-warning-comments
+  // TODO
   // Check if we need to pass options or defaults for
   // userStore: new WebStorageStateStore(),
   // loadUserInfo: true,
@@ -29,13 +30,15 @@ class OIDCStrategy {
 
   init() {
     return this.oidcUserManager.getUser()
-      .then(user => (this.user = user));
+      .then(user => {
+        this.user = user;
+      });
   }
 
   addListener(eventName, callback) {
     const event = ADD_EVENTS.get(eventName);
 
-    if (!event || !this.oidcUserManager.events[event]) {
+    if (!event || !this.oidcUserManager.events[event]) {
       throw new Error(`Can not add listener: ${eventName} does not exist`);
     }
 
@@ -45,7 +48,7 @@ class OIDCStrategy {
   removeListener(eventName, callback) {
     const event = REMOVE_EVENTS.get(eventName);
 
-    if (!event || !this.oidcUserManager.events[event]) {
+    if (!event || !this.oidcUserManager.events[event]) {
       throw new Error(`Can not remove listener: ${eventName} does not exist`);
     }
 
@@ -53,7 +56,7 @@ class OIDCStrategy {
   }
 
   isLoggedIn() {
-    return this.user != null && !this.user.expired;
+    return this.user !== null && !this.user.expired;
   }
 
   getUser() {
@@ -70,7 +73,9 @@ class OIDCStrategy {
 
   completeAuthentication(url) {
     return this.oidcUserManager.signinRedirectCallback(url)
-      .then(user => this.user = user);
+      .then(user => {
+        this.user = user;
+      });
   }
 
   /**
@@ -88,11 +93,7 @@ class OIDCStrategy {
   }
 
   completeLogout(url) {
-    return this.oidcUserManager.signoutRedirectCallback(url)
-  }
-
-  completeLogout() {
-
+    return this.oidcUserManager.signoutRedirectCallback(url);
   }
 }
 

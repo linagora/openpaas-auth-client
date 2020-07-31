@@ -13,16 +13,18 @@ class BasicAuth {
   }
 
   init() {
-    return this.fetchUser().then(user => {
-      this.user = user;
-      return this.user;
-    }).catch(() => {
-      return false;
-    });
+    return this.fetchUser()
+      .then(user => {
+        this.user = user;
+
+        return this.user;
+      })
+      .catch(() => false);
   }
 
   login() {
     window.location = `${this.loginPath}?continue=${window.location.hash}`;
+
     return Promise.resolve();
   }
 
@@ -38,8 +40,9 @@ class BasicAuth {
     return this.user;
   }
 
-  addEventListener(eventName, callback) {
-    // TODO
+  // eslint-disable-next-line class-methods-use-this
+  addEventListener() {
+    console.warn('Adding listener is not supported in basic auth');
   }
 }
 

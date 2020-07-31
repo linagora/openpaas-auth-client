@@ -1,5 +1,5 @@
-import OIDCAuth from './oidc/index';
 import BasicAuth from './basic/index';
+import OIDCAuth from './oidc/index';
 
 const AUTHS = {
   oidc: OIDCAuth,
@@ -16,4 +16,4 @@ function getAuthProvider(provider, options = {}) {
   return new AuthProvider(options);
 }
 
-export { getAuthProvider };
+export default { getAuthProvider };

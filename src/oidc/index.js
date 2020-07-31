@@ -6,7 +6,7 @@ class OIDCAuth {
   constructor(options = {}) {
     this.options = options;
     this.strategy = new OIDCStrategy(options);
-    this.callbackURLPattern = options.callbackURLPattern || DEFAULT_URL_PATTERN;
+    this.callbackURLPattern = options.callbackURLPattern || DEFAULT_URL_PATTERN;
   }
 
   init() {
