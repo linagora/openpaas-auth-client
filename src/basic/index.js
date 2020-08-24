@@ -7,8 +7,8 @@ class BasicAuth {
     this.logoutPath = logoutPath;
     this.fetchUser = fetchUser;
 
-    if (!this.fetchUser) {
-      throw new Error('fetchUser is required');
+    if (!this.fetchUser || typeof this.fetchUser !== 'function') {
+      throw new Error('fetchUser is required and must be a function');
     }
   }
 
@@ -33,7 +33,7 @@ class BasicAuth {
   }
 
   logout() {
-    window.location = this.options.logoutPath;
+    window.location = this.logoutPath;
   }
 
   getUser() {
