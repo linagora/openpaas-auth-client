@@ -22,7 +22,7 @@ class BasicAuth {
       .catch(() => false);
   }
 
-  login() {
+  signin() {
     window.location = `${this.loginPath}?continue=${window.location.hash}`;
 
     return Promise.resolve();
@@ -32,7 +32,7 @@ class BasicAuth {
     return !!this.user;
   }
 
-  logout() {
+  signout() {
     window.location.href = this.logoutPath;
   }
 

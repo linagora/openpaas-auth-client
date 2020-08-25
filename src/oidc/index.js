@@ -16,7 +16,7 @@ class OIDCAuth {
     return this.strategy.init()
       .then(() => {
         if (currentUrl.match(this.callbackURLPattern)) {
-          return this.strategy.completeAuthentication(currentUrl)
+          return this.strategy.completeSignin(currentUrl)
             .then(() => this._onSignIn());
         }
 
@@ -36,16 +36,16 @@ class OIDCAuth {
     return this.getUser();
   }
 
-  login() {
-    return this.strategy.startAuthentication();
+  signin() {
+    return this.strategy.signin();
   }
 
   isLoggedIn() {
     return this.strategy.isLoggedIn();
   }
 
-  logout() {
-    return this.strategy.startLogout();
+  signout() {
+    return this.strategy.signout();
   }
 
   getUser() {

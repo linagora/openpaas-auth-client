@@ -71,11 +71,11 @@ class OIDCStrategy {
     return `${this.user.token_type} ${this.user.access_token}`;
   }
 
-  startAuthentication() {
+  signin() {
     return this.oidcUserManager.signinRedirect();
   }
 
-  completeAuthentication(url) {
+  completeSignin(url) {
     return this.oidcUserManager.signinRedirectCallback(url)
       .then(user => {
         this.user = user;
@@ -86,7 +86,7 @@ class OIDCStrategy {
    *
    * @param {Boolean} global: If for some reason you want to signout only for the current application, set global to false.
    */
-  startLogout(global = true) {
+  signout(global = true) {
     if (!global) {
       return this.oidcUserManager.removeUser().then(() => {
         this.user = null;
@@ -96,7 +96,7 @@ class OIDCStrategy {
     return this.oidcUserManager.signoutRedirect();
   }
 
-  completeLogout(url) {
+  completeSignout(url) {
     return this.oidcUserManager.signoutRedirectCallback(url);
   }
 }
