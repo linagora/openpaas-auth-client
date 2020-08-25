@@ -1,14 +1,5 @@
 import { UserManager } from 'oidc-client';
 
-const EVENTS = [
-  'userLoaded',
-  'userUnloaded',
-  'accessTokenExpiring',
-  'accessTokenExpired',
-  'silentRenewError',
-  'userSignedOut'
-];
-
 const EVENTS_MAPPING = new Map([
   ['userLoaded', 'userLoaded'],
   ['userUnloaded', 'userUnloaded'],
