@@ -33,7 +33,7 @@ class BasicAuth {
   }
 
   logout() {
-    window.location = this.logoutPath;
+    window.location.href = this.logoutPath;
   }
 
   getUser() {

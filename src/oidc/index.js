@@ -43,7 +43,7 @@ class OIDCAuth {
   }
 
   logout() {
-    return this.strategy.signoutRedirect();
+    return this.strategy.startLogout();
   }
 
   getUser() {
