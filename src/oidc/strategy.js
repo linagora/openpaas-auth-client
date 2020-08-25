@@ -18,11 +18,6 @@ function uppercaseFirstLetter(name) {
 
 class OIDCStrategy {
   // eslint-disable-next-line no-warning-comments
-  // TODO
-  // Check if we need to pass options or defaults for
-  // userStore: new WebStorageStateStore(),
-  // loadUserInfo: true,
-  // automaticSilentSignin: true
   constructor(options) {
     this.options = options;
     this.oidcUserManager = new UserManager(this.options);
