@@ -9,8 +9,14 @@ const EVENTS = [
   'userSignedOut'
 ];
 
-const ADD_EVENTS = new Map(EVENTS.map(event => ([event, `add${uppercaseFirstLetter(event)}`])));
-const REMOVE_EVENTS = new Map(EVENTS.map(event => ([event, `remove${uppercaseFirstLetter(event)}`])));
+const EVENTS_MAPPING = new Map([
+  ['userLoaded', 'userLoaded'],
+  ['userUnloaded', 'userUnloaded'],
+  ['userSignedOut', 'userSignedOut'],
+  ['sessionExpiring', 'accessTokenExpiring'],
+  ['sessionExpired', 'accessTokenExpired'],
+  ['silentRenewError', 'silentRenewError']
+]);
 
 function uppercaseFirstLetter(name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
@@ -31,23 +37,35 @@ class OIDCStrategy {
   }
 
   addListener(eventName, callback) {
-    const event = ADD_EVENTS.get(eventName);
+    const event = EVENTS_MAPPING.get(eventName);
 
-    if (!event || !this.oidcUserManager.events[event]) {
+    if (!event) {
+      throw new Error(`'${eventName}' is not a valid event name`);
+    }
+
+    const listenerName = `add${uppercaseFirstLetter(event)}`;
+
+    if (!this.oidcUserManager.events[listenerName]) {
       throw new Error(`Can not add listener: ${eventName} does not exist`);
     }
 
-    this.oidcUserManager.events[event](callback);
+    this.oidcUserManager.events[listenerName](callback);
   }
 
   removeListener(eventName, callback) {
-    const event = REMOVE_EVENTS.get(eventName);
+    const event = EVENTS_MAPPING.get(eventName);
 
-    if (!event || !this.oidcUserManager.events[event]) {
+    if (!event) {
+      throw new Error(`'${eventName}' is not a valid event name`);
+    }
+
+    const listenerName = `add${uppercaseFirstLetter(event)}`;
+
+    if (!this.oidcUserManager.events[listenerName]) {
       throw new Error(`Can not remove listener: ${eventName} does not exist`);
     }
 
-    this.oidcUserManager.events[event](callback);
+    this.oidcUserManager.events[listenerName](callback);
   }
 
   isLoggedIn() {

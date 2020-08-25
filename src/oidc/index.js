@@ -17,19 +17,21 @@ class OIDCAuth {
       .then(() => {
         if (currentUrl.match(this.callbackURLPattern)) {
           return this.strategy.completeAuthentication(currentUrl)
-            .then(() => this._onLoggedIn());
+            .then(() => this._onSignIn());
         }
 
         if (!this.isLoggedIn()) {
           return false;
         }
 
-        return this._onLoggedIn();
+        return this._onSignIn();
       });
   }
 
-  _onLoggedIn() {
-    this.options.onLogin && this.options.onLogin({ headers: { Authorization: this.strategy.getAuthorizationHeaderValue()}});
+  _onSignIn() {
+    this.options.onSignInComplete &&
+    typeof this.options.onSignInComplete === 'function' &&
+    this.options.onSignInComplete({ headers: { Authorization: this.strategy.getAuthorizationHeaderValue()}});
 
     return this.getUser();
   }
