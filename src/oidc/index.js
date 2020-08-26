@@ -29,7 +29,6 @@ class OIDCAuth {
   }
 
   _onSignIn() {
-    this.options.onSignInComplete &&
     typeof this.options.onSignInComplete === 'function' &&
     this.options.onSignInComplete({ headers: { Authorization: this.strategy.getAuthorizationHeaderValue()}});
 
