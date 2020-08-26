@@ -1,3 +1,6 @@
 # openpaas-auth-client
 
-OpenPaaS Authentication Client
+[![Build Status](https://travis-ci.com/OpenPaaS-Suite/openpaas-auth-client.svg?branch=main)](https://travis-ci.com/OpenPaaS-Suite/openpaas-auth-client)
+
+OpenPaaS client-side authentication library.
+
