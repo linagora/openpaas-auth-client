@@ -23,7 +23,10 @@ class BasicAuth {
   }
 
   signin() {
-    window.location = `${this.loginPath}?continue=${window.location.hash}`;
+    // Get full path after domain
+    const redirectTo = window.location.href.replace(window.location.origin, '');
+
+    window.location = `${this.loginPath}?continue=${redirectTo}`;
 
     return Promise.resolve();
   }
