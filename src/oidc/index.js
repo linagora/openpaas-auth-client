@@ -61,6 +61,10 @@ class OIDCAuth {
   removeEventListener(eventName, callback) {
     this.strategy.removeListener(eventName, callback);
   }
+
+  willRenewSession() {
+		return this.options.automaticSilentRenew;
+	}
 }
 
 export default OIDCAuth;
