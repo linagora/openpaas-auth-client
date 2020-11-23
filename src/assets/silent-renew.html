@@ -1,0 +1,12 @@
+<script src="./oidc-client.min.js"></script>
+<script>
+  console.log("OIDC - Silent renew callback");
+  var mgr = new Oidc.UserManager();
+  mgr.signinSilentCallback()
+    .then(user => {
+      console.log("OIDC - Silent renew callback result", user);
+    })
+    .catch(error => {
+      console.error("OIDC - Silent renew callback error", error);
+    });
+</script>

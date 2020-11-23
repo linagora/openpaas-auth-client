@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -14,5 +15,19 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/assets',
+          to: 'assets'
+        },
+        {
+          from: 'node_modules/oidc-client/dist/oidc-client.min.js',
+          to: 'assets'
+        }
+      ]
+    })
+  ]
 };

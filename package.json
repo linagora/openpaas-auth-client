@@ -26,6 +26,7 @@
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^6.3.2",
     "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-linagora-esn": "github:linagora/eslint-config-linagora-esn#v1.1.0",
