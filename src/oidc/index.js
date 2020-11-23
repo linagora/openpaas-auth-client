@@ -5,9 +5,9 @@ const DEFAULT_URL_PATTERN = /auth\/oidc\/callback/;
 class OIDCAuth {
   constructor(options = {}) {
     this.options = options;
-		if (this.options.silent_redirect_uri) {
-			this.options.automaticSilentRenew = true;
-		}
+    if (this.options.silent_redirect_uri) {
+      this.options.automaticSilentRenew = true;
+    }
     this.strategy = new OIDCStrategy(options);
     this.callbackURLPattern = options.callbackURLPattern || DEFAULT_URL_PATTERN;
   }
@@ -63,8 +63,8 @@ class OIDCAuth {
   }
 
   willRenewSession() {
-		return this.options.automaticSilentRenew;
-	}
+    return this.options.automaticSilentRenew;
+  }
 }
 
 export default OIDCAuth;
