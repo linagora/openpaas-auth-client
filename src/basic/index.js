@@ -44,6 +44,11 @@ class BasicAuth {
   }
 
   // eslint-disable-next-line class-methods-use-this
+  willRenewSession() {
+    return false;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
   addEventListener() {
     console.warn('Adding listener is not supported in basic auth');
   }

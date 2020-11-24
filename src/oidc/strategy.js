@@ -1,4 +1,4 @@
-import { UserManager } from 'oidc-client';
+import { Log, UserManager } from 'oidc-client';
 
 const EVENTS_MAPPING = new Map([
   ['userLoaded', 'userLoaded'],
@@ -14,9 +14,10 @@ function uppercaseFirstLetter(name) {
 }
 
 class OIDCStrategy {
-  // eslint-disable-next-line no-warning-comments
   constructor(options) {
     this.options = options;
+    Log.logger = console;
+    Log.info('OIDC Options', this.options);
     this.oidcUserManager = new UserManager(this.options);
   }
 
