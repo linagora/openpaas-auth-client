@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Twake/openpaas-auth-client.git"
+    "url": "git+https://github.com/linagora/openpaas-auth-client.git"
   },
   "author": "",
   "license": "SEE LICENSE IN LICENSE file",
   "bugs": {
-    "url": "https://github.com/Twake/openpaas-auth-client/issues"
+    "url": "https://github.com/linagora/openpaas-auth-client/issues"
   },
-  "homepage": "https://github.com/Twake/openpaas-auth-client#readme",
+  "homepage": "https://github.com/linagora/openpaas-auth-client#readme",
   "dependencies": {
     "oidc-client": "^1.10.1"
   },
