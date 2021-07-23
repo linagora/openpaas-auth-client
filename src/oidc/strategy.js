@@ -73,6 +73,8 @@ class OIDCStrategy {
   }
 
   signin() {
+    this._storePreviousUrl();
+
     return this.oidcUserManager.signinRedirect();
   }
 
@@ -80,6 +82,7 @@ class OIDCStrategy {
     return this.oidcUserManager.signinRedirectCallback(url)
       .then(user => {
         this.user = user;
+        this._redirectToPreviousUrl();
       });
   }
 
@@ -99,6 +102,19 @@ class OIDCStrategy {
 
   completeSignout(url) {
     return this.oidcUserManager.signoutRedirectCallback(url);
+  }
+
+  _storePreviousUrl() {
+    window.localStorage.setItem('previousUrl', window.location.href);
+  }
+
+  _redirectToPreviousUrl() {
+    const previousUrl = window.localStorage.getItem('previousUrl');
+    window.localStorage.removeItem('previousUrl');
+
+    if (previousUrl) {
+      window.location.href = previousUrl;
+    }
   }
 }
 
