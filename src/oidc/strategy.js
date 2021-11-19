@@ -80,6 +80,14 @@ class OIDCStrategy {
     return this.oidcUserManager.signinRedirectCallback(url)
       .then(user => {
         this.user = user;
+
+        // redirect to event form when /participation is called:
+        const locationListInSorage = JSON.parse(window.localStorage.getItem('locationListInSorage'));;
+        const participationState = locationListInSorage.find(state => state.path.match(/participation/));
+        if (participationState) {
+          window.history.replaceState({ state: '/participation' }, window.document.title, 'calendar' + participationState.path + '?jwt=' + participationState.search.jwt);
+        }
+        window.localStorage.removeItem('locationListInSorage');
       });
   }
 
